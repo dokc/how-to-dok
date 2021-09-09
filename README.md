@@ -6,12 +6,12 @@ This repository is intended as a place to develop knowledge, practice, and examp
 ## A Cloud Native Data Workflow on Kubernetes using Argo Workflows and K8ssandra
 
 This project is about:
-Using cloud-native data services on Kubernetes
-Using a cloud-native database on Kubernetes for storing data
-Using a cloud-native workflow engine to determine how to handle and move data
-Showing how a simple app or script can be used on Kubernetes as part of a data pipeline
-Showing how to develop custom code components for use in Kubernetes
-Showing which depending services you might encounter and need when wanting to start running data workloads on kubernetes
+- Using cloud-native data services on Kubernetes
+- Using a cloud-native database on Kubernetes for storing data
+- Using a cloud-native workflow engine to determine how to handle and move data
+- Showing how a simple app or script can be used on Kubernetes as part of a data pipeline
+- Showing how to develop custom code components for use in Kubernetes
+- Showing which depending services you might encounter and need when wanting to start running data workloads on Kubernetes
 
 ### Proposed Architecture
 ![proposed architecture](static/how_to_dok_proposed_architecture.png)
