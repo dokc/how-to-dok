@@ -1,7 +1,7 @@
 name: Issue Template❌
 description: File/Create an Issue
 title: "[Issue]: Your Issue's brief Description goes here"
-labels: [Bug, Triage, Idea,Other]
+labels: [bug,help wanted, good first issue]
 assignees:
   - unassigned
 body:
