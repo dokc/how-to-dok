@@ -11,7 +11,7 @@ body:
         Thanks for taking the time to fill out this Bug/Issue report!
   - type: input
     attributes:
-      label: Issue Template
+      label: Issue 
       description: Can you please elaborate your Issue here?
       placeholder: Tell us what you found.
     validations:
