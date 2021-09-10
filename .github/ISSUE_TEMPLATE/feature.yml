@@ -11,7 +11,7 @@ body:
         Thanks for filling this form, We'll implement the feature .
   - type: input
     attributes:
-      label: Issue Template
+      label: Feature
       description: Can you please elaborate your Issue here?
       placeholder: Tell us what you found.
     validations:
