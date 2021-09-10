@@ -103,3 +103,8 @@ Contributing areas:
 - Data input files (DoK Rap lyrics)
 - Visual (graphs, drawings, designs, video)
 
+### Contact
+
+Check out the [DoK Slack channel](https://dokcommunity.slack.com/archives/C029SP0H937) for updates and discussion.  
+And sign up to the update [newsletter](https://docs.google.com/forms/d/e/1FAIpQLSeNTRsesRA7-1uMyFeHMMqfG9IgdVd7soY_L4wx5WqeDUcMjA/viewform) to be able to join the bi-weekly progress calls!
+
