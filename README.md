@@ -108,3 +108,8 @@ Contributing areas:
 Check out the [DoK Slack channel](https://dokcommunity.slack.com/archives/C029SP0H937) for updates and discussion.  
 And sign up to the update [newsletter](https://docs.google.com/forms/d/e/1FAIpQLSeNTRsesRA7-1uMyFeHMMqfG9IgdVd7soY_L4wx5WqeDUcMjA/viewform) to be able to join the bi-weekly progress calls!
 
+ 
+## Thanks to all the contributors ❤️
+<a href = "https://github.com/dokc/how-to-dok/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo=dokc/how-to-dok"/>
+</a>
