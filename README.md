@@ -36,7 +36,7 @@ Argo workflows is a cloud-native workflow engine with which we can author workfl
 We need to have a way to supply new input data to our pipeline. This data should be made available, a possible option here is blob storage. We should see if we can run blob storage on Kubernetes with for example MinIo
 
 **A super cool k8s DB K8ssandra**
-The initial destination for our data. A K8Ssandra cluster configuration using the K8ssandra operator. That is ready for accepting our data.
+The initial destination for our data. A K8ssandra cluster configuration using the K8ssandra operator. That is ready for accepting our data.
 
 **Build and release pipeline for releasing container image**
 How do we ensure we get our container image built and released automatically so that the services in our cluster can use it? Via CI/CD
@@ -53,7 +53,7 @@ We can identify some specific knowledge areas
 - General Kubernetes knowledge
 - Developing services for/on Kubernetes
 - Argo Workflow
-- K8Ssandra
+- K8ssandra
 - Backend code development (for writing pieces of code that are part of the data pipeline workflow)
 - Github workflow
 - Local GIT flow
@@ -108,3 +108,8 @@ Contributing areas:
 Check out the [DoK Slack channel](https://dokcommunity.slack.com/archives/C029SP0H937) for updates and discussion.  
 And sign up to the update [newsletter](https://docs.google.com/forms/d/e/1FAIpQLSeNTRsesRA7-1uMyFeHMMqfG9IgdVd7soY_L4wx5WqeDUcMjA/viewform) to be able to join the bi-weekly progress calls!
 
+ 
+## Thanks to all the contributors ❤️
+<a href = "https://github.com/dokc/how-to-dok/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo=dokc/how-to-dok"/>
+</a>
