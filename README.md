@@ -50,6 +50,8 @@ Together this should provide and overview of how to run cloud-native data workfl
 ### Knowledge needed
 
 We can identify some specific knowledge areas
+- Node.js and Express.js
+- Basic knowledge of Docker and Containerization
 - General Kubernetes knowledge
 - Developing services for/on Kubernetes
 - Argo Workflow
