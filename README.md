@@ -91,6 +91,8 @@ Q: How will we setup and handle repository git flow?
 
 A:
 
+### How to access the ORM?
+You can read about it [here](https://github.com/AbhijithGanesh/how-to-dok/edit/express-config/src/readme.md)
 ### Contributing
 
 This section contains information on how to start contributing to this project
