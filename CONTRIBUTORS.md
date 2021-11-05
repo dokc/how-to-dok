@@ -10,3 +10,5 @@ These are the wonderful people who have donated their time and effort to help ma
 * [Kunal Verma](https://github.com/verma-kunal)
 * [Brad McCoy](https://github.com/bradmccoydev)
 * [Mainak Biswas](https://github.com/mainak99)
+* [Atharv Karajgi](https://github.com/atharvkarajgi)
+
