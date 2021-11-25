@@ -119,6 +119,7 @@ helm repo update
 ☝️ `helm repo update` ensures we have the latest information from the k8ssandra repository.
 
 Next up we install only the cass-operator and we install it in the cass-operator namespace.
+The cass-operator enables us to spin up cassandra datacenters and manage them.
 ```
 helm install cass-operator k8ssandra/cass-operator -n cass-operator --create-namespace
 ```
@@ -132,5 +133,76 @@ STATUS: deployed
 REVISION: 1
 TEST SUITE: None
 ```
+
+And we should not have a cassandradatacenters kubernetes object!
+```
+kubectl get cassandradatacenters.cassandra.datastax.com 
+```
+
+Next up it is time to create a minimal example of a cassandra datacenter. For this we take the example-cassdc-minimal.yaml from https://raw.githubusercontent.com/k8ssandra/cass-operator/master/operator/example-cassdc-yaml/cassandra-3.11.x/example-cassdc-minimal.yaml, but we update it with a custom local-path storage class so we can run on k3d using local storage as a storage backend.
+
+See: [example-cassdc-minimal-local-path-storage.yaml](example-cassdc-minimal-local-path-storage.yaml#L15-L21)
+
+Apply it!
+```
+kubectl -n cass-operator apply -f example-cassdc-minimal-local-path-storage.yaml
+```
+
+Your output should look like this:
+```
+cassandradatacenter.cassandra.datastax.com/dc1 created
+```
+
+And after a little while our cassandra datacenter should come up...
+```
+kubectl get pods -n cass-operator 
+...
+NAME                            READY   STATUS    RESTARTS   AGE
+cass-operator-99b74bdd7-q89zb   1/1     Running   0          20m
+cluster1-dc1-default-sts-0      1/2     Running   0          4m6s
+cluster1-dc1-default-sts-1      1/2     Running   0          4m6s
+cluster1-dc1-default-sts-2      1/2     Running   0          2m56s
+```
+
+But we only get one container running per pod!! That is not good, let's check out what is going on!
+
+Let's check the container logs for our pods:
+```
+kubectl logs cluster1-dc1-default-sts-0 --container cassandra
+...
+WARN  [epollEventLoopGroup-98-2] 2021-11-26 14:52:12,295 Loggers.java:39 - [s93] Error connecting to Node(endPoint=/tmp/cassandra.sock, hostId=null, hashCode=788c5c18), trying next node (FileNotFoundException: null)
+INFO  [nioEventLoopGroup-2-2] 2021-11-26 14:52:12,296 Cli.java:617 - address=/10.42.2.7:54346 url=/api/v0/metadata/endpoints status=500 Internal Server Error
+
+kubectl logs cluster1-dc1-default-sts-0 --container server-system-logger
+...
+ERROR [main] 2021-11-26 10:40:42,493 CassandraDaemon.java:803 - Exception encountered during startup
+org.apache.cassandra.exceptions.ConfigurationException: Unable to check disk space available to /opt/cassandra/data/commitlog. Perhaps the Cassandra user does not have the necessary permissions
+        at org.apache.cassandra.config.DatabaseDescriptor.applySimpleConfig(DatabaseDescriptor.java:498) ~[apache-cassandra-3.11.11.jar:3.11.11]
+        at org.apache.cassandra.config.DatabaseDescriptor.applyAll(DatabaseDescriptor.java:324) ~[apache-cassandra-3.11.11.jar:3.11.11]
+        at org.apache.cassandra.config.DatabaseDescriptor.daemonInitialization(DatabaseDescriptor.java:153) ~[apache-cassandra-3.11.11.jar:3.11.11]
+        at org.apache.cassandra.config.DatabaseDescriptor.daemonInitialization(DatabaseDescriptor.java:137) ~[apache-cassandra-3.11.11.jar:3.11.11]
+        at org.apache.cassandra.service.CassandraDaemon.applyConfig(CassandraDaemon.java:680) [apache-cassandra-3.11.11.jar:3.11.11]
+        at org.apache.cassandra.service.CassandraDaemon.activate(CassandraDaemon.java:622) [apache-cassandra-3.11.11.jar:3.11.11]
+        at org.apache.cassandra.service.CassandraDaemon.main(CassandraDaemon.java:786) [apache-cassandra-3.11.11.jar:3.11.11]
+Caused by: java.nio.file.AccessDeniedException: /opt/cassandra/data/commitlog
+        at sun.nio.fs.UnixException.translateToIOException(UnixException.java:84) ~[na:1.8.0_312]
+        at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102) ~[na:1.8.0_312]
+        at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107) ~[na:1.8.0_312]
+        at sun.nio.fs.UnixFileStore.devFor(UnixFileStore.java:57) ~[na:1.8.0_312]
+        at sun.nio.fs.UnixFileStore.<init>(UnixFileStore.java:64) ~[na:1.8.0_312]
+        at sun.nio.fs.LinuxFileStore.<init>(LinuxFileStore.java:44) ~[na:1.8.0_312]
+        at sun.nio.fs.LinuxFileSystemProvider.getFileStore(LinuxFileSystemProvider.java:51) ~[na:1.8.0_312]
+        at sun.nio.fs.LinuxFileSystemProvider.getFileStore(LinuxFileSystemProvider.java:39) ~[na:1.8.0_312]
+        at sun.nio.fs.UnixFileSystemProvider.getFileStore(UnixFileSystemProvider.java:368) ~[na:1.8.0_312]
+        at java.nio.file.Files.getFileStore(Files.java:1461) ~[na:1.8.0_312]
+        at org.apache.cassandra.io.util.FileUtils.getFileStore(FileUtils.java:682) ~[apache-cassandra-3.11.11.jar:3.11.11]
+        at org.apache.cassandra.config.DatabaseDescriptor.guessFileStore(DatabaseDescriptor.java:1087) ~[apache-cassandra-3.11.11.jar:3.11.11]
+        at org.apache.cassandra.config.DatabaseDescriptor.applySimpleConfig(DatabaseDescriptor.java:493) ~[apache-cassandra-3.11.11.jar:3.11.11]
+        ... 6 common frames omitted
+```
+
+Uh oh, looks like some filesystem permission errors. Remember we are using local-path storage backend so maybe our storage backend is not giving the correct permissions to our cassandra user.
+
+### TODO - debug storage
 
 
