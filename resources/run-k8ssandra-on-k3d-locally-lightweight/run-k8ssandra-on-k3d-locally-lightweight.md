@@ -2,7 +2,7 @@
 
 This guide describes how to run k8ssandra locally on k3d.
 
-It is a lightweight, stripped down bare minimum k8ssandra installation intended to walk through the process of usin k3d locally as a development environment and using only single components from the k8ssandra HELM chart.
+It is a lightweight, stripped down bare minimum k8ssandra installation intended to walk through the process of using k3d locally as a development environment and using only single components from the k8ssandra HELM chart.
 
 **Docker is required on your machine and needs to be running for k3d**
 
@@ -13,9 +13,11 @@ What do we need to get this up and running:
 * K8ssandra
 * kubectl
 
+Let's get cooking! 🥣
+
 ### kubectl
 
-kubectl is the command line tool to interface and talk to kubernetes clusters. We will need it to check and perform operations on our k3d cluster. Let's install it!
+First of; kubectl is the command line tool to interface and talk to kubernetes clusters. We will need it to check and perform operations on our k3d cluster. Let's install it!
 There are many install options listed on the kubernetes [website](https://kubernetes.io/docs/tasks/tools/) but we are focusing here on **linux**.
 
 The below commands download the kubectl binary, enable it to be executed by changing permissions and move the binary to the `.local/bin` folder on your machine from where it is available to your from everywhere on your system (for your user).
@@ -26,16 +28,20 @@ chmod +x kubectl
 mv ./kubectl ~/.local/bin/kubectl
 ```
 
-After this check you can run `kubectl`!
+After this check you can run the `kubectl` command!
 
-Next up: k3d
+Next up, k3d.
 
 ### k3d
+
+To simulate multiple kubernetes nodes locally we use k3d which is a wrapper around k3s to enable it to run in Docker. This way we can simulate a multi nodes cluster locally. k3s is an extremely lightweight and portable kubernetes version developed by Rancher.
+
 Let's start by installing k3d.
+
 
 The below command downloads the k3d install script from the rancher/k3d repository and using the TAG=v4.4.8 installs that version of k3d on our local system.
 
-Make sure to check the install.sh script: *Do not blindly execute downloaded shell scripts.*
+Make sure to check the install.sh script: **Do not blindly execute downloaded shell scripts.**
 
 ```
 curl -s -O https://raw.githubusercontent.com/rancher/k3d/main/install.sh
@@ -136,7 +142,7 @@ TEST SUITE: None
 
 And we should not have a cassandradatacenters kubernetes object!
 ```
-kubectl get cassandradatacenters.cassandra.datastax.com 
+kubectl get cassandradatacenters.cassandra.datastax.com -n cass-operator
 ```
 
 Next up it is time to create a minimal example of a cassandra datacenter. For this we take the example-cassdc-minimal.yaml from https://raw.githubusercontent.com/k8ssandra/cass-operator/master/operator/example-cassdc-yaml/cassandra-3.11.x/example-cassdc-minimal.yaml, but we update it with a custom local-path storage class so we can run on k3d using local storage as a storage backend.
@@ -168,12 +174,12 @@ But we only get one container running per pod!! That is not good, let's check ou
 
 Let's check the container logs for our pods:
 ```
-kubectl logs cluster1-dc1-default-sts-0 --container cassandra
+kubectl logs -n cass-operator cluster1-dc1-default-sts-0 --container cassandra
 ...
 WARN  [epollEventLoopGroup-98-2] 2021-11-26 14:52:12,295 Loggers.java:39 - [s93] Error connecting to Node(endPoint=/tmp/cassandra.sock, hostId=null, hashCode=788c5c18), trying next node (FileNotFoundException: null)
 INFO  [nioEventLoopGroup-2-2] 2021-11-26 14:52:12,296 Cli.java:617 - address=/10.42.2.7:54346 url=/api/v0/metadata/endpoints status=500 Internal Server Error
 
-kubectl logs cluster1-dc1-default-sts-0 --container server-system-logger
+kubectl logs -n cass-operator cluster1-dc1-default-sts-0 --container server-system-logger
 ...
 ERROR [main] 2021-11-26 10:40:42,493 CassandraDaemon.java:803 - Exception encountered during startup
 org.apache.cassandra.exceptions.ConfigurationException: Unable to check disk space available to /opt/cassandra/data/commitlog. Perhaps the Cassandra user does not have the necessary permissions
@@ -203,6 +209,78 @@ Caused by: java.nio.file.AccessDeniedException: /opt/cassandra/data/commitlog
 
 Uh oh, looks like some filesystem permission errors. Remember we are using local-path storage backend so maybe our storage backend is not giving the correct permissions to our cassandra user.
 
-### TODO - debug storage
+The local-path storage backend uses a simple configuration file that contains a setup and teardown part. These parts determine how new volume's are created, and with which permissions! https://github.com/rancher/local-path-provisioner#customize-the-configmap
 
+Let's check the current `setup` and `teardown` bits of the default local-path configuration:
+```
+kubectl get configmaps -n kube-system local-path-config -o yaml 
+...
+  setup: |-
+    #!/bin/sh
+    while getopts "m:s:p:" opt
+    do
+        case $opt in
+            p)
+            absolutePath=$OPTARG
+            ;;
+            s)
+            sizeInBytes=$OPTARG
+            ;;
+            m)
+            volMode=$OPTARG
+            ;;
+        esac
+    done
+    mkdir -m 0700 -p ${absolutePath}
+  teardown: |-
+    #!/bin/sh
+    while getopts "m:s:p:" opt
+    do
+        case $opt in
+            p)
+            absolutePath=$OPTARG
+            ;;
+            s)
+            sizeInBytes=$OPTARG
+            ;;
+            m)
+            volMode=$OPTARG
+            ;;
+        esac
+    done
+    rm -rf ${absolutePath}
+```
 
+Looks like we have our culprit:
+```
+    mkdir -m 0700 -p ${absolutePath}
+```
+
+This is creating new volume's with limited access permissions, we need to relax these so that our cassandra user in our cassandra pods can write and read from our local-path storage volume's.
+
+Included here is a an altered version of the local-path configmap with relaxed permissions: [local-path-config-relaxed-permissions.yaml](local-path-config-relaxed-permissions.yaml)
+
+**Remember that this is for development purposes, do not use these permissions in live systems**
+
+Let's apply our updated config:
+```
+kubectl apply -f local-path-config-relaxed-permissions.yaml
+```
+
+And redeploy our cassandra datacenter:
+```
+kubectl delete cassandradatacenters.cassandra.datastax.com dc1 -n cass-operator
+kubectl -n cass-operator apply -f example-cassdc-minimal-local-path-storage.yaml
+```
+
+After some time our cassandra datacenter pods should come up, working, with permission to write to local-path storage! 🚀
+```
+kubectl get pods -n cass-operator
+NAME                            READY   STATUS    RESTARTS   AGE
+cass-operator-99b74bdd7-q89zb   1/1     Running   1          18h
+cluster1-dc1-default-sts-0      2/2     Running   0          3m4s
+cluster1-dc1-default-sts-1      2/2     Running   0          3m4s
+cluster1-dc1-default-sts-2      2/2     Running   0          3m4s
+```
+
+This concludes setting up a lightweight 3 node cassandra datacenter cluster user only the k8ssandra operator on k3d using local-path storage.
