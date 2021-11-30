@@ -13,9 +13,9 @@ jobs:
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: |
-            '<h1>It''s great having you contribute to this project</h1> Welcome to Dok community :nerd_face:' |
+            '<h1>It's great having you contribute to this project</h1> Welcome to Dok community :nerd_face:' |
             '<br>Please have little patience, we'll get back to you in a while'
         
         pr-message:  |
-            '<h1>It''s great having you contribute to this project</h1> Welcome to Dok community :nerd_face:' |
+            '<h1>It's great having you contribute to this project</h1> Welcome to Dok community :nerd_face:' |
             '<br>Please have little patience, we'll review the PR very soon.'
