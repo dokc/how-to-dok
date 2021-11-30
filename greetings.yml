@@ -1,4 +1,4 @@
-name: DokGreetingsBot
+name: greetings
 
 on: [pull_request, issues]
 
@@ -14,8 +14,10 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: |
             '<h1>It's great having you contribute to this project</h1> Welcome to Dok community :nerd_face:' |
-            '<br>The maintainers will get back to you soon for discussion over the issue!'
+            '<br>The maintainers will get back to you soon for discussion over the issue!' |
+            'If you haven't joined our slack channel, then you are more than welcome to <a href="https://dokcommunity.slack.com/">join</a>
         
         pr-message:  |
             '<h1>It's great having you contribute to this project</h1> Welcome to Dok community :nerd_face:' |
-            '<h3>Now, Relax 😉 -> Grab a drink ☕ -> And wait for the maintainers views on your contribution. Meanwhile you can discuss on other issues and solve them 😀</h3>'
+            '<h3>Now, Relax 😉 -> Grab a drink ☕ -> And wait for the maintainers views on your contribution.' |
+            'Meanwhile you can discuss on other issues in our <a href="https://dokcommunity.slack.com/">slack channel</a>😀</h3>'
