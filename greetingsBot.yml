@@ -1,0 +1,21 @@
+name: DokGreetingsBot
+
+on: [pull_request, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: |
+            '<h1>It''s great having you contribute to this project</h1> Welcome to Dok community :nerd_face:' |
+            '<br>Please have little patience, we'll get back to you in a while'
+        
+        pr-message:  |
+            '<h1>It''s great having you contribute to this project</h1> Welcome to Dok community :nerd_face:' |
+            '<br>Please have little patience, we'll review the PR very soon.'
