@@ -27,10 +27,10 @@ What does the data that we are going to be moving around look like, what standar
 This can be written in any language and should be able to write input data to our destination database.
 
 **A container image containing this code that we can run on kubernetes**
-With Argo workflows it is not necessary to build a seperate container for our custom code but it is a good exercise in developing and building components to run your Kubernetes environment.
+With Argo workflows it is not necessary to build a separate container for our custom code but it is a good exercise in developing and building components to run your Kubernetes environment.
 
-**A worfklow engine (Argo) to run this container image on a schedule or on an event**
-Argo workflows is a cloud-native workflow engine with which we can author workflows. A workflow with Argo is a kubernetes resource object that describes how we go from a startpoint to a desired endpoint. This worfklow will be responsible for orchestrating moving data into our destination and handle the running of the steps required. In it simplest form it can be just one step and may look like this: Start -> (Pick up input data and write to destination) -> Success, a more complex form could be: Start -> (Check if data already in destination) -> (Validate data adheres to schema) -> (Test data for data quality) -> (Calculate additinal metrics and insights on input file) -> (Write to destination) -> (Orchestrate metadata) -> (Report to end users) -> Success
+**A workflow engine (Argo) to run this container image on a schedule or on an event**
+Argo workflows is a cloud-native workflow engine with which we can author workflows. A workflow with Argo is a kubernetes resource object that describes how we go from a startpoint to a desired endpoint. This workflow will be responsible for orchestrating moving data into our destination and handle the running of the steps required. In it simplest form it can be just one step and may look like this: Start -> (Pick up input data and write to destination) -> Success, a more complex form could be: Start -> (Check if data already in destination) -> (Validate data adheres to schema) -> (Test data for data quality) -> (Calculate additional metrics and insights on input file) -> (Write to destination) -> (Orchestrate metadata) -> (Report to end users) -> Success
 
 **Blob storage that has the Rap files**
 We need to have a way to supply new input data to our pipeline. This data should be made available, a possible option here is blob storage. We should see if we can run blob storage on Kubernetes with for example MinIo
@@ -45,7 +45,7 @@ CI/CD can be an interesting topic in itself per component but lets focus on one 
 #### What should the outcome or products of this project be?
 
 Ideally what we are looking for is documentation, best practices, example resources (code, k8s resource definitions), tutorials on how to achieve running a cloud-native data workflow on Kubernetes.
-Together this should provide and overview of how to run cloud-native data workflows on Kubernetes.
+Together this should provide an overview of how to run cloud-native data workflows on Kubernetes.
 
 ### Knowledge needed
 
@@ -63,7 +63,7 @@ We can identify some specific knowledge areas
 
 ### Reference articles
 
-This section contains reference articles and material touching on or relating to items, services or knowledge, explicit or implicit which is helpfull in the context of this project.
+This section contains reference articles and material touching on or relating to items, services or knowledge, explicit or implicit which is helpful in the context of this project.
 
 ### Doubts and Uncertainty
 
@@ -112,7 +112,7 @@ Contributing areas:
 Check out the [DoK Slack channel](https://dokcommunity.slack.com/archives/C029SP0H937) for updates and discussion.  
 And sign up to the update [newsletter](https://docs.google.com/forms/d/e/1FAIpQLSeNTRsesRA7-1uMyFeHMMqfG9IgdVd7soY_L4wx5WqeDUcMjA/viewform) to be able to join the bi-weekly progress calls!
 
- 
+
 ## Thanks to all the contributors ❤️
 <a href = "https://github.com/dokc/how-to-dok/graphs/contributors">
   <img src = "https://contrib.rocks/image?repo=dokc/how-to-dok"/>
