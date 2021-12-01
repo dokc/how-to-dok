@@ -27,6 +27,6 @@ body:
     id: multimedia
     attributes:
       label: Further Details
-      description: Please give us the image/video (if applicable)
+      description: Please attach an image/video (if applicable)
       placeholder: Please upload your multimedia(screenshots and video) here
       
