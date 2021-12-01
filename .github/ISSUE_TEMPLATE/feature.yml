@@ -27,5 +27,5 @@ body:
     attributes:
       label: Additional context
       description: Add any other context or screenshots about the feature request here.
-      placeholder: Please upload your multimedia(screenshots and video) here
+      placeholder: Please upload your multimedia(screenshots or video) here
       
