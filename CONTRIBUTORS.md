@@ -13,3 +13,4 @@ These are the wonderful people who have donated their time and effort to help ma
 * [Atharv Karajgi](https://github.com/atharvkarajgi)
 * [Ashish jaiswar](https://github.com/ashish-jaiswar)
 * [Uttam kumar](https://github.com/helper-uttam)
+* [Utkarsh Maurya](https://github.com/utkarsh1311)
