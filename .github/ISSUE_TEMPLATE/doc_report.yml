@@ -1,22 +1,19 @@
 name: Documentation request
-description: Change regarding improvising the docs to be more accessible
+description: Change regarding improving the docs to be more accessible
 title: '[DOCUMENTATION]'
 labels: ['documentation']
 body:
-  - type: checkboxes
-    attributes:
-      label: Category documentation update
-      description: What category does this change fall under.
-      options:
-        - label: Information addition regarding the newest change through a PR.
-        - label: Typo error.
-        - label: New category addition.
-        - label: Refractoring sentences that make more sense.
-        - label: Fixing broken links.
-        - label: Refractors / reformating of the document.
   - type: textarea
     attributes:
-      label: Describe the solution you think might work
+      label: Category of documentation update
+      description: |
+      What category does this change fall under. |
+      for example Typo error, New category addition, Rephrasing the sentences, fixing broken links etc 
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Describe the change you think might work
       description: Please describe the change & need of change in atmost detail possible.
     validations:
       required: false
