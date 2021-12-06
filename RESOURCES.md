@@ -5,6 +5,7 @@
 - [Video Tutorials](#video-tutorials)
     - [Node.js/Express.js/MongoDB](#nodejsexpressjsmongodb)
     - [Cassandra](#cassandra)
+    - [K8ssandra](#k8ssandra)
     - [Docker](#docker)
     - [Kubernetes](#kubernetes)
 - [Documentation/Cheat Sheets](#documentationcheat-sheets)  
@@ -24,6 +25,10 @@
 
     1. [Intro to Cassandra - DataStax](https://youtube.com/playlist?list=PL2g2h-wyI4SqCdxdiyi8enEyWvACcUa9R)
     2. [Learn Apache Cassandra - DataStax](https://youtube.com/playlist?list=PL2g2h-wyI4SqzmsHQZaYcK9uDmPuihPz2)
+
+- ### K8ssandra
+
+    1. [Introducing K8ssandra - Apache Cassandr & Kubernetes](https://youtu.be/pvzr75ZYwLE)
 
 - ### Docker
 
