@@ -8,6 +8,7 @@
     - [Docker](#docker)
     - [Kubernetes](#kubernetes)
     - [K8ssandra](#k8ssandra)
+    - [Argo Workflows](#argo-workflows)
 - [Documentation/Cheat Sheets](#documentationcheat-sheets)  
 - [Blogs/Articles](#blogsarticles) 
 - [Other Resources](#other-resources)
@@ -36,7 +37,12 @@
 
 - ### K8ssandra
 
-    1. [Introducing K8ssandra - Apache Cassandr & Kubernetes](https://youtu.be/pvzr75ZYwLE)
+    1. [Introducing K8ssandra - Apache Cassandra & Kubernetes](https://youtu.be/pvzr75ZYwLE)
+
+- ### Argo Workflows
+
+    1. [Argo Workflows Training - Argo Proj](https://youtube.com/playlist?list=PLGHfqDpnXFXLHfeapfvtt9URtUF1geuBo)
+    2. [Argo Workflows and Argo Events - Anais Urlichs](https://youtu.be/c3qJr6L8nHg)
 
 ## Documentation/Cheat Sheets
 
@@ -61,5 +67,7 @@
     - *List of additional resources for kubernetes*
 - [Katacoda](https://www.katacoda.com)
     - *Hands on Docker & K8s*
+- [Argo Workflows - Katacoda](https://www.katacoda.com/argoproj/courses/argo-workflows/)
+    - *Hands on Argo Workflows on Kubernetes*
 - [QnA](https://www.notion.so/Questions-Deepanshu-Goel-3b111a11946b47c7a72629108b9986f2)
     - *Question and Answers related to DoK Rap Project*
