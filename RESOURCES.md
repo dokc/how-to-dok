@@ -35,6 +35,7 @@
 - ### Kubernetes
 
     1. [Kubernetes Tutorial for Beginners - TechWorld with Nana](https://www.youtube.com/watch?v=X48VuDVv0do&t=803s)
+    2. [How to Run NodeJS application on Kubernetes - blog](medium.com/@bajiraouttamsinha/lets-deploy-our-first-nodejs-application-on-kubernetes-874870270b5b)
 
 - ### K8ssandra
 
