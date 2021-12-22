@@ -29,5 +29,5 @@ Some of the various service included with a cloud :
 2) We can reduce the operational risk and get things done at greater velocity by leveraging the value-added services that are available on the cloud.
 
 ***RESOURCES***
-- [IBM's introduction to cloud native article](https://ibm.github.io/cloud-enterprise-examples/concepts/cloud-native-overview/)
+- [IBM's introduction to cloud-native article](https://ibm.github.io/cloud-enterprise-examples/concepts/cloud-native-overview/)
 - [CNCF's What is cloud-native and why does it exist](https://youtu.be/d_8Vly4_ofo)
