@@ -30,10 +30,12 @@
 - ### Docker
 
     1. [Docker Tutorial for Beginners - TechWorld with Nana](https://youtu.be/3c-iBn73dDE)
+    2. [Dockerizing a Node.js web app](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)
     
 - ### Kubernetes
 
     1. [Kubernetes Tutorial for Beginners - TechWorld with Nana](https://www.youtube.com/watch?v=X48VuDVv0do&t=803s)
+    2. [How to Run NodeJS application on Kubernetes - blog](medium.com/@bajiraouttamsinha/lets-deploy-our-first-nodejs-application-on-kubernetes-874870270b5b)
 
 - ### K8ssandra
 
