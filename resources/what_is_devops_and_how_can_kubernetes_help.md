@@ -35,3 +35,7 @@ Kubernetes automates operational tasks of container management and includes buil
 1. Increasing development velocity: Kubernetes helps you to build cloud-native microservices-based apps. It also supports the containerization of existing apps, thereby becoming the foundation of application modernization and letting you develop apps faster.
 2. Deploying applications anywhere: Kubernetes is built to be used anywhere, allowing you to run your applications across on-site deployments and public clouds; as well as hybrid deployments in between. So you can run your applications where you need them.
 3. Running efficient services: Kubernetes can automatically adjust the size of a cluster required to run a service. This enables you to automatically scale your applications, up and down, based on the demand and run them efficiently.
+
+### Kubernetes has lots of benefits and has made organization's life simpler!
+
+![K8S](https://miro.medium.com/max/1200/1*I5np0F6Vz0KFHLbzXp28hw.png)
