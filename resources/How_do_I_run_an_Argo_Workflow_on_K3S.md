@@ -186,7 +186,7 @@ spec:
     
 **:white_check_mark: Step 2: Getting logs of our workflow**
 
-   Replace `@latest` with the name of your workflow. For eg. in my case its `hello-world-xpc6d`
+   Here, `@latest` tag refers to the recent or the last submitted workflow. You can also replace `@latest` with the name of your workflow. For eg. in my case the workflow name would be `hello-world-xpc6d`.
 
    ```sh
    argo list -n argo
