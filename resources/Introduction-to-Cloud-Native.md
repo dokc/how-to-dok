@@ -14,6 +14,8 @@ The applications that are designed traditionally  are not built keeping cloud co
 
 2) So, we need a new architecture for our applications to utilize the benefits of the cloud. There is a need to design the applications keeping the cloud in mind and take advantage of several services the cloud provides.<br/>
 
+3) Also Applications built on the philosophy and principles of cloud native can still be extended to the on-premises server. Cloud Native gives us that extended flexibility. An application that is deployed on cloud can be deployed on-prem if it is managed well and done right.
+
 
 
 ### **Why Cloud Native?**   <hr/>
