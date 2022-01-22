@@ -5,7 +5,7 @@
 ***The Cloud Native Computing Foundation(CNCF)***  defines Cloud Native as technologies that empower organizations to build and run scalable applications in modern, dynamic environments 
 such as public, private, and hybrid clouds. Containers, service meshes, microservices, immutable infrastructure, and declarative APIs exemplify this approach.
 
-**So simply defined, cloud-native is building an application for the cloud** 
+**So simply defined, cloud-native is building an application for the cloud by making efficient use of the resources the cloud provides.** 
 
 ### **Need for cloud-native**  <hr/>
 
