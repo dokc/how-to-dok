@@ -14,7 +14,7 @@ Let's get started!! :rocket:
 
 Before proceeding further with the hands-on we need to have some tools and CLI installed locally:
 
-1) **Docker:** A containerization tool that we will be using for running K3s cluster on container. Download it from [here](https://docs.docker.com/desktop/windows/install/). To check your installation run command `docker --version`. 
+1) **Docker:** A containerization tool that we will be using for running K3s cluster on container. Download it from [here](https://www.docker.com/products/docker-desktop). To check your installation run command `docker --version`. 
    
    Output:
    ```sh
