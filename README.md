@@ -17,28 +17,28 @@ This project is about:
 ![proposed architecture](static/how_to_dok_proposed_architecture.png)
 
 ### Components
-**Rap as configuration (Rap as Code - RaC)**
+* **Rap as configuration (Rap as Code - RaC)**
 This concerns the input data for our pipeline. We want to move data around rap lyrics, artists, meetups, etc through our data pipeline to destinations.
 
-**Rap datamodel**
+* **Rap datamodel**
 What does the data that we are going to be moving around look like, what standard does it adhere to, which format is it, how do we describe the fields we have in for our data model? The data model should be the source of truth regarding what our data object looks like within our system.
 
-**A piece of code / app to write data to a database**
+* **A piece of code / app to write data to a database**
 This can be written in any language and should be able to write input data to our destination database.
 
-**A container image containing this code that we can run on kubernetes**
+* **A container image containing this code that we can run on kubernetes**
 With Argo workflows, it is unnecessary to build a separate container for our custom code, but it is an excellent exercise in developing and building components to run your Kubernetes environment.
 
-**A workflow engine (Argo) to run this container image on a schedule or on an event**
+* **A workflow engine (Argo) to run this container image on a schedule or on an event**
 Argo workflows is a cloud-native workflow engine with which we can author workflows. A workflow with Argo is a Kubernetes resource object that describes how we go from a start point to the desired endpoint. This workflow will be responsible for orchestrating moving data into our destination and handling the running of the steps required. In its simplest form it can be just one step and may look like this: Start -> (Pick up input data and write to destination) -> Success, a more complex form could be: Start -> (Check if data already in destination) -> (Validate data adheres to schema) -> (Test data for data quality) -> (Calculate additional metrics and insights on input file) -> (Write to destination) -> (Orchestrate metadata) -> (Report to end-users) -> Success
 
-**Blob storage that has the Rap files**
+* **Blob storage that has the Rap files**
 We need to have a way to supply new input data to our pipeline. This data should be made available, an option here is Blob storage. We should see if we can run blob storage on Kubernetes with, for example, MinIO.
 
-**A super cool k8s DB K8ssandra**
+* **A super cool k8s DB K8ssandra**
 The initial destination for our data. A K8ssandra cluster configuration using the K8ssandra operator. That is ready for accepting our data.
 
-**Build and release pipeline for releasing container image**
+* **Build and release pipeline for releasing container image**
 How do we ensure we get our container image built and released automatically? So, that the services in our cluster can use it via CI/CD. <br />
 CI/CD can be an interesting topic itself per component, but let us focus on one use case first.
 
