@@ -40,7 +40,7 @@ Then update your feature branch from your local copy of `main` and push it:
 
 ```bash
 git checkout 3/setup-argo-workflows
-git rebase master
+git rebase main
 git push --set-upstream origin 3/setup-argo-workflows
 ```
 

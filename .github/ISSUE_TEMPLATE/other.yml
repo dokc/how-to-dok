@@ -1,6 +1,6 @@
 name: Other
 description: Use this for any other issues. PLEASE do not create blank issues
-title: "[OTHER] <description>"
+title: "[OTHER]"
 labels: ["awaiting triage"]
 body:
   - type: markdown
@@ -20,18 +20,3 @@ body:
       description: Is there anything else we should know about this issue?
     validations:
       required: false
-  - type: checkboxes
-    id: consent
-    attributes:
-      label: Would you like to work on this issue?
-      options:
-        - label: Yes, I want to work on this issue!
-          required: false
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/dokc/how-to-dok/blob/main/CODE_OF_CONDUCT.md)
-      options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
