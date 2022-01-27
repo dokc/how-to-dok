@@ -1,6 +1,6 @@
 name: Idea❓
-description: Suggest your issue here🥇
-title: "[IDEA]: Your Issue's brief Description goes here"
+description: Suggest your idea here🥇
+title: "[IDEA]: Your Idea's brief Description goes here"
 labels: [enhancement, help-wanted]
 assignees:
   - unassigned
