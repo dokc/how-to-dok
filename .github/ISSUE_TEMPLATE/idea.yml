@@ -16,18 +16,10 @@ body:
       placeholder: Tell us what you'd like to have briefly.
     validations:
       required: true
-  - type: textarea
-    id: details
-    attributes:
-      label: Elaboration
-      description: Elaborately, explain your idea/
-      placeholder: Tell us what you wish to see.
-    validations:
-      required: true
+
   - type: textarea
     id: multimedia
     attributes:
       label: Further Details/ Image and Video Based suggestion
       description: Please give us the image/video if applicable
       placeholder: Please upload your multimedia(screenshots and video) here
-      
