@@ -2,7 +2,7 @@
 cluster_name: "Single Node Cluster"
 
 # Single Node Cluster
-num_tokens: 1
+num_tokens: 3
 
 # CQLSH configuration
 # Deals with addresses
