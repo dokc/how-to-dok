@@ -1,0 +1,100 @@
+# Cassandra storage config YAML
+cluster_name: "Single Node Cluster"
+
+# Single Node Cluster
+num_tokens: 1
+
+# CQLSH configuration
+# Deals with addresses
+rpc_address: 0.0.0.0
+listen_address: 192.168.160.2
+broadcast_rpc_address: 192.168.160.2
+role_manager: CassandraRoleManager
+
+network_authorizer: AllowAllNetworkAuthorizer
+roles_validity_in_ms: 2000
+permissions_validity_in_ms: 2000
+credentials_validity_in_ms: 2000
+
+# Mandatory partitioner
+partitioner: org.apache.cassandra.dht.Murmur3Partitioner
+
+# Disk properties and failure definition
+disk_optimization_strategy: "ssd" # Please donot change until unless you have operational complexity
+disk_failure_policy: stop
+commit_failure_policy: stop
+
+# Mandatory commit log syncs
+commitlog_sync: periodic
+commitlog_sync_period_in_ms: 10000
+
+# Seed Providers
+seed_provider:
+  - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+    parameters:
+      - seeds: "192.168.160.2"
+
+# Concurrent Read and Write definition
+concurrent_reads: 32
+concurrent_writes: 32
+concurrent_counter_writes: 32
+concurrent_materialized_view_writes: 32
+
+# Storage ports definition
+
+# Never allow ssl port on localhost, use a bridge network or a firewall for security reasons
+storage_port: 7000
+ssl_storage_port: 7001
+
+# Transport rules
+start_native_transport: true
+native_transport_port: 9042
+native_transport_allow_older_protocols: true
+
+auto_snapshot: true
+
+snapshot_links_per_second: 0
+
+# Read write timeout rules
+read_request_timeout_in_ms: 5000
+range_request_timeout_in_ms: 10000
+write_request_timeout_in_ms: 2000
+counter_write_request_timeout_in_ms: 5000
+cas_contention_timeout_in_ms: 1000
+truncate_request_timeout_in_ms: 60000
+request_timeout_in_ms: 10000
+
+# Diagnostics
+diagnostic_events_enabled: false
+
+# Mandatory endpoint snitch definition
+endpoint_snitch: org.apache.cassandra.locator.SimpleSnitch
+
+# Encryption
+server_encryption_options:
+  internode_encryption: none
+  keystore: conf/.keystore
+  keystore_password: cassandra
+  truststore: conf/.truststore
+  truststore_password: cassandra
+
+client_encryption_options:
+  enabled: false
+  optional: false
+  keystore: conf/.keystore
+  keystore_password: cassandra
+
+transparent_data_encryption_options:
+  enabled: false
+  chunk_length_kb: 64
+  cipher: AES/CBC/PKCS5Padding
+  key_alias: testing:1
+  # CBC IV length for AES needs to be 16 bytes (which is also the default size)
+  # iv_length: 16
+  key_provider:
+    - class_name: org.apache.cassandra.security.JKSKeyProvider
+      parameters:
+        - keystore: conf/.keystore
+          keystore_password: cassandra
+          store_type: JCEKS
+          key_password: cassandra
