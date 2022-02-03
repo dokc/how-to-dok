@@ -1,5 +1,5 @@
 # Cassandra storage config YAML
-cluster_name: "Single Node Cluster"
+cluster_name: "single_node_cluster"
 
 # Single Node Cluster
 num_tokens: 3
