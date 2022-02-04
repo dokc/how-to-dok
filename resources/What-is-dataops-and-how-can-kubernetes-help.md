@@ -64,10 +64,19 @@ Let’s say you created an application(e.g Pokemon go) and decided to share it w
 Kubernetes is an open-source <b><i>container orchestration system for automating software deployment, scaling, and management.</i></b>
 
 - A Kubernetes cluster consists of a set of worker machines, called <i>nodes</i>, that run containerized applications.
+- Development teams and data science teams are increasingly interested in moving their build-test and model training environments to Kubernetes in order to drive efficiency and avoid vendor lock-in. When they make this migration, it is absolutely necessary for them to be able to take their clone-based processes with them so that they don’t lose all of the lifecycle efficiencies that they have achieved over the years. In fact, the lack of ability to clone a volume to a different namespace is often a showstopper. It is considered a best practice for different developers to work in different namespaces. This is done for security reasons, and there is typically no compromising when it comes to security. If clones are going to be included in the development lifecycle, the ability to clone workspaces to different namespaces is vital.
 ![image](https://www.unixarena.com/wp-content/uploads/2019/05/Master-In-Charge-for-K8s-Cluster.png)
 - Every cluster has at least one worker node. Hence if a node fails, your application will still be accessible from the other nodes as in a cluster, multiple nodes are grouped.
 
 ### Why should you use Kubernetes for DataOps?
+
+ DataOps has many things in common that relate them to Kubernetes. It serve the same business goals as devops when it comes to speeding up application software development, deployment, and delivery. In a nutshell, the DataOps practices focus on improving application production through software development workflow optimization powered by data-driven insights.
+
+ Kubernetes follows the same principles being a powerful tool that provides a rock-solid technological ground for enhancements on both software and human levels. DataOps engineers can leverage the accuracy of massive data assets for their BigData analytics through robust data orchestration, timely updates, persistent data storage, and streamlined data pipelines across platforms and departments.
+
+  The benefits Kubernetes brings to organizations in slightly more generic concepts. This is due to the fact that K8s can positively affect the workflows of various teams and departments at a time. What’s more, the benefits have an accumulative effect as you can capitalize on utilizing Kubernetes in the long run.
+
+
      
      > Service deployment and adjustment.
      > Storage Alternatives.
@@ -79,6 +88,18 @@ Kubernetes environment is persistently becoming the leading platform for cloud c
 
 
 Just like Devops, DataOps is also a methdology it's not a tool.
+
+## Top DataOps Projects
+* [Genie](https://netflix.github.io/genie/)
+* [Piper](https://www.piperr.io/)
+* [Airflow](https://airflow.apache.org/)
+* [Naveego](https://www.naveego.com/)
+* [Delphix](https://www.delphix.com/)
+Delphix is the industry leader in Data Ops and provides an intelligent data platform that accelerates digital transformation for leading companies around the world. Uses kubernetes.
+
+## Finally...
+
+There is no doubt that Kubernetes is a true game-changer in today's software development. The platform helps you boost the overall performance and productivity when it comes to efficiently managing containerized services and workloads. Not to mention its huge time- and cost-saving potential. With Kubernetes at your fingertips, you can drastically enhance the efficacy of your DevOps, DataOps, and GitOps workflows while creating automated CI/CD pipelines.
 
 
 
