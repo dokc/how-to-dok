@@ -1,4 +1,4 @@
-The cassandra yml configures how the local Cassandra instance needs to be configured.
+The cassandra.yml file configures the local Cassandra instance.
 It uses the configuration comands in `cassandra.yml` to define provisions. For most provisions the comment lines
 elaborate the configured provision.
 
