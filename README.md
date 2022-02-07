@@ -61,6 +61,12 @@ We can identify some specific knowledge areas
 - Local GIT flow
 - CI/CD Automation
 
+### Resources
+
+Here is a list of knowledge resources created by this community:
+- [Run k8ssandra on k3d locally - lightweight](resources/run-k8ssandra-on-k3d-locally-lightweight/run-k8ssandra-on-k3d-locally-lightweight.md)
+- [How to run a cassandra docker container locally](Cassandra-Local-Config/README.md)
+
 ### Reference articles
 
 This section contains reference articles and material touching on or relating to items, services or knowledge, explicit or implicit which is helpful in the context of this project.

@@ -1,0 +1,64 @@
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "nodePathMap":[
+      {
+        "node":"DEFAULT_PATH_FOR_NON_LISTED_NODES",
+        "paths":["/var/lib/rancher/k3s/storage"]
+      }
+      ]
+    }
+  helperPod.yaml: |-
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: helper-pod
+    spec:
+      containers:
+      - name: helper-pod
+        image: rancher/library-busybox:1.32.1
+  setup: |-
+    #!/bin/sh
+    while getopts "m:s:p:" opt
+    do
+        case $opt in
+            p)
+            absolutePath=$OPTARG
+            ;;
+            s)
+            sizeInBytes=$OPTARG
+            ;;
+            m)
+            volMode=$OPTARG
+            ;;
+        esac
+    done
+    mkdir -m 0777 -p ${absolutePath}
+  teardown: |-
+    #!/bin/sh
+    while getopts "m:s:p:" opt
+    do
+        case $opt in
+            p)
+            absolutePath=$OPTARG
+            ;;
+            s)
+            sizeInBytes=$OPTARG
+            ;;
+            m)
+            volMode=$OPTARG
+            ;;
+        esac
+    done
+    rm -rf ${absolutePath}
+kind: ConfigMap
+metadata:
+  annotations:
+    objectset.rio.cattle.io/applied: H4sIAAAAAAAA/+SU0U/bPhDH/xX/7sfLpKZpCXSVEQ/dgA0NaAXdXmZUXeJrY5rYlu2WdVX/98npKjoN2N6Xh8j2N5/L984+rwGt+kLOK6OBw7ILLZAYEPgaCqOnatZ+8I20FpoxAdpIGmEor9EK4F/jYqPsNAFcwNn5xeDz1XgyGow/Ti6Gt5Ob4c3k6vJufH42uRmend8JaO0gi6H0TShIl+jSSuWpQ12U5NJ55lMfjMMZCbiPxCa+7oXeQAtKqiy5kZHtFdYV8L1UOFt2hZ4rLTkbGSl0TQFjXjzyGmvibIsnNsreUtFIhdEBlSbnm2nyzLfRtqpxRpztfFYqd+hWSb7wq9x84912dtiOpfQUFhY4/P9fmiud+lLox1JVxGYUjA2eCai555YLYMYGoaXZ/qBAT+zA2MCU3q7Ex755GmPuTbUIzWacHgxH48Hthyf15ORp7Pcor77TpX63CuRfh+o9aGmqayPpZYA8FtG7JqHruVSOJTXrvO10WGLZwXrfaty4QOikedT/VmFczRI3/a0cmxbEcwoc3jf9do0WWrA7r7EPUWsTMCijfZya/IGK4Cm0nTLtAkOoqK1MqmIMaL2om0dNLpkt58Bhnvk9ZdltsU9Ky9OBlEb/MURsCeBQmQKr5Gd7/hXkLRaRnC9ySvzKB6pj+hXmVL2aWom+BA7dfjbNjove8XSaF1mnd9TrZNOjbNo97ndkv+j18VBiLo9i0F9Mxjsm2V5nsJWetbL5EQAA//9yLpHhDgUAAA
+    objectset.rio.cattle.io/id: ""
+    objectset.rio.cattle.io/owner-gvk: k3s.cattle.io/v1, Kind=Addon
+    objectset.rio.cattle.io/owner-name: local-storage
+    objectset.rio.cattle.io/owner-namespace: kube-system
+  name: local-path-config
+  namespace: kube-system
