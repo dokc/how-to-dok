@@ -1,21 +1,21 @@
-# How do we build and push our custom docker images to a central repository?
+# 🔰 How do we build and push our custom docker images to a central repository? 
 
-## Docker
+## Docker 🐋
 Docker is an open-source lightweight virtualization tool. It is containerizing platform in which user can run and deploy application and its dependencies and form containers to run over any linux infrastructure.
 
-## What Exactly Is A Docker Image?
+## What Exactly Is A Docker Image? 🐋
 A Docker image is a read-only, inert template that comes with instructions for deploying containers. In Docker, everything basically revolves around images.An image consists of a collection of files (or layers) that pack together all the necessities—such as dependencies, source code, and libraries—needed to set up a completely functional container environment.
 
 <b>Images are stored on a Docker registry, such as the Docker Hub, or on a local registry.</b>
 
-## Ways to create a custom docker image:
+## 🔰 Ways to create a custom docker image:
 
 There are two ways from which we can create a custom docker image:
 
 1. Manually by using commit command
 2. Dockerfile
 
-## Let's take an example and built the docker image using both the ways:
+## 🔰 Let's take an example and built the docker image using both the ways:
 
 So here we are going to <b>Build Apache Web Server Docker Image</b>
 
@@ -26,7 +26,7 @@ So here we are going to <b>Build Apache Web Server Docker Image</b>
 ### Step 1: Get the latest Centos Docker image by using <b>docker pull command.</b><br> 
 `docker pull centos:7` <i>Docker pull command is used to download or pull latest image from Docker Hub repositories.</i> 
 
-Output :
+🔅 Output :
 ```
 7: Pulling from library/centos
 2d473b07cdd5: Pull complete 
@@ -37,7 +37,7 @@ docker.io/library/centos:7
 
 ### Step 2: To check and list all docker images `docker images`
 
-Output :
+🔅 Output :
 ```
 REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
 centos       7         eeb6ee3f44bd   4 months ago   204MB
@@ -48,7 +48,7 @@ centos       7         eeb6ee3f44bd   4 months ago   204MB
 `--name` : This argument is used to tag a name to the running container.<br>
 `docker run –it –name webserver centos:7`
 
-Output :
+🔅 Output :
 ```
 [root@39a40757b33f /]# 
 [root@39a40757b33f /]# 
@@ -57,7 +57,7 @@ Output :
 ### Step 4: Now install Apache webserver and it’s all dependencies <br>
 `yum install httpd –y`
 
-Output :
+🔅 Output :
 ```
 Loaded plugins: fastestmirror, ovl
 Determining fastest mirrors
@@ -163,14 +163,14 @@ Complete!
 
 i.e; `docker commit webserver web:v1`
 
-Output:
+🔅 Output:
 
 ```
 sha256:4b0c6ef101f8cc4674a9d2809c4baa4a5c1d839d0ea0b0832e5334aa93f993ee
 ```
 You can see by running `docker images` command.
 
-Output:
+🔅 Output:
 ```
 REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
 web          v1        4b0c6ef101f8   2 minutes ago   392MB
@@ -184,14 +184,14 @@ number where apache webserver runs.
 `/usr/sbin/httpd –D FOREGROUND`: This argument is command which will run when container is launched this command will start the web server
 
 `docker run -p 8080:80 web:v1 /usr/sbin/httpd -D FOREGROUND`
-Output :
+🔅 Output :
 ```
 AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
 ```
 
 ### Step 9: To See the Result using `curl IP` or you can also see on webpage `http://ip`
 
-Output:
+🔅 Output:
 ```
 Custom docker image created!!!
 ```
@@ -246,7 +246,7 @@ Dockerfile commands explanation:
 
 `docker build -t webserver:v1 .`
 
-Output:
+🔅 Output:
 ```
 Sending build context to Docker daemon  3.072kB
 Step 1/6 : FROM centos:7
@@ -374,7 +374,7 @@ centos       7         eeb6ee3f44bd   4 months ago         204MB
 
 `curl http://<host ip>:1234/` or on webpage `http://<host ip>:1234/`
 
-Output :
+🔅 Output :
 ```
 Custom docker image created using Dockerfile!!!
 ```
@@ -410,7 +410,7 @@ centos            7         eeb6ee3f44bd   4 months ago     204MB
 ### Step 4: Push your image to the DockerHub
 `docker push yourhubusername/<image_name>:<version>`
 
-Output:
+🔅 Output:
 ```
 The push refers to repository [docker.io/vrukshali26/web]
 a59ac102fa99: Pushed 
@@ -421,7 +421,7 @@ v1: digest: sha256:29169ceace4c1c0e29022d77453be7dcc97070d9ab1f5bbb640051ff13178
 
 ### Now you can see on DockerHub, your first custom docker image has been pushed...
 
-# Hurrayyyy!!!
+# Hurrayyyy!!! 🤩🤩
 
 
 
