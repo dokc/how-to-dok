@@ -10,14 +10,14 @@ A Docker image is a read-only, inert template that comes with instructions for d
 
 ## 🔰 Ways to create a custom docker image:
 
-There are two ways from which we can create a custom docker image:
+👉🏻 There are two ways from which we can create a custom docker image:
 
 1. Manually by using commit command
 2. Dockerfile
 
 ## 🔰 Let's take an example and built the docker image using both the ways:
 
-So here we are going to <b>Build Apache Web Server Docker Image</b>
+👉🏻 So here we are going to <b>Build Apache Web Server Docker Image</b>
 
 <i>Apache web server is popular open source http web server tool which is widely used for deployment of webpages. It can be installed in any operating system.</i>
 
@@ -44,9 +44,9 @@ centos       7         eeb6ee3f44bd   4 months ago   204MB
 ```
 
 ### Step 3: To run docker image we use following command <br>
-`-it` : This argument is used to allocate a bash shell and take standard input. <br>
-`--name` : This argument is used to tag a name to the running container.<br>
-`docker run –it –name webserver centos:7`
+👉🏻 `-it` : This argument is used to allocate a bash shell and take standard input. <br>
+👉🏻 `--name` : This argument is used to tag a name to the running container.<br>
+👉🏻 `docker run –it –name webserver centos:7`
 
 🔅 Output :
 ```
@@ -55,7 +55,7 @@ centos       7         eeb6ee3f44bd   4 months ago   204MB
 ```
 
 ### Step 4: Now install Apache webserver and it’s all dependencies <br>
-`yum install httpd –y`
+👉🏻 `yum install httpd –y`
 
 🔅 Output :
 ```
@@ -153,13 +153,13 @@ Complete!
 
 ### Step 5: Now create a webpage at location `/var/www/html/index.html`
 
-```Custom docker image created !!!```
+👉🏻 ```Custom docker image created !!!```
 
 ### Step 6: Now exit from the running container using `exit` command. Exit command will stop the container. Exit command of docker same as power off or shut down of our computer.
 
 ### Step 7: We have container in which apache webserver is installed and our webpage is configured. We can make a new customized docker image from the stopped docker image using `docker commit` command. Docker commit command will build our own image.
 
-`docker commit <container_id or name of container> <Name of new image>:<version name>`
+👉🏻 `docker commit <container_id or name of container> <Name of new image>:<version name>`
 
 i.e; `docker commit webserver web:v1`
 
@@ -178,12 +178,11 @@ centos       7         eeb6ee3f44bd   4 months ago    204MB
 ```
 
 ### Step 8: Launching a webserver container using our customized image. <br>
-`-p`: This argument is used to port forwarding. Which means anybody from outside who comes for 8080 its request is forwarded to port 80. Port 80 is default port 
-number where apache webserver runs.
+👉🏻 `-p`: This argument is used to port forwarding. Which means anybody from outside who comes for 8080 its request is forwarded to port 80. Port 80 is default port number where apache webserver runs.
 
-`/usr/sbin/httpd –D FOREGROUND`: This argument is command which will run when container is launched this command will start the web server
+👉🏻 `/usr/sbin/httpd –D FOREGROUND`: This argument is command which will run when container is launched this command will start the web server
 
-`docker run -p 8080:80 web:v1 /usr/sbin/httpd -D FOREGROUND`
+👉🏻 `docker run -p 8080:80 web:v1 /usr/sbin/httpd -D FOREGROUND`
 🔅 Output :
 ```
 AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
@@ -203,14 +202,14 @@ Custom docker image created!!!
 Let's start
 
 ### Step 1: Make a directory
-`mkdir test` and `cd test`
+👉🏻 `mkdir test` and `cd test`
 
 ### Step 2: Now create a file `Dockerfile` 
 (File name is hard coded do not change the file name) <br>
-`touch Dockerfile`
+👉🏻 `touch Dockerfile`
 
 ### Step 3: Create a sample web page with name index.html
-```Custom docker image created using Dockerfile!!!```
+👉🏻 ```Custom docker image created using Dockerfile!!!```
 
 ### Step 4: Edit the Dockerfile using following instructions
 ```
@@ -222,7 +221,7 @@ CMD [“/usr/sbin/httpd”, “-D”, “FOREGROUND”]
 EXPOSE 80
 ```
 
-Dockerfile commands explanation:
+👉🏻 Dockerfile commands explanation:
 
 1. <b>MAINTAINER</b> — This command is used to give the information about the author or manager who is managing this image.
 `MAINTAINER Vrukshali`
@@ -242,9 +241,9 @@ Dockerfile commands explanation:
 `CMD [“/usr/sbin/httpd”,” -D”,” FOREGROUND”]`
 
 ### Step 5: Build the image using docker build. 
-`.` is Dockerfile is present n current location and `–t` option is to tag or name the image.
+👉🏻 `.` is Dockerfile is present n current location and `–t` option is to tag or name the image.
 
-`docker build -t webserver:v1 .`
+👉🏻 `docker build -t webserver:v1 .`
 
 🔅 Output:
 ```
@@ -382,12 +381,12 @@ Custom docker image created using Dockerfile!!!
 ## So till here we have created our custom images using both ways. Now we need to push this image to central repository, here I will be using DockerHub as central registry.
 
 ### Step 1: You need a DockerHub Account
-You can create this on https://hub.docker.com/
+👉🏻 You can create this on https://hub.docker.com/
 
 ### Step 2: Login to DockerHub via terminal
 
 `docker login --username=yourhubusername --email=youremail@company.com`
-With your own username and email that you used for the account. Enter your password when prompted. If everything worked you will get a message similar to
+👉🏻 With your own username and email that you used for the account. Enter your password when prompted. If everything worked you will get a message similar to
 ```
 WARNING: login credentials saved in /home/username/.docker/config.json
 Login Succeeded
@@ -397,7 +396,7 @@ Login Succeeded
 
 `docker tag <image id or image name>:<version> yourhubusername/<image_name>:<version>`
 
-`sudo docker tag webserver:v1 vrukshali26/web:v1`
+👉🏻 `docker tag webserver:v1 vrukshali26/web:v1`
 
 You can see using `docker images`
 ```
@@ -408,7 +407,7 @@ centos            7         eeb6ee3f44bd   4 months ago     204MB
 ```
 
 ### Step 4: Push your image to the DockerHub
-`docker push yourhubusername/<image_name>:<version>`
+👉🏻 `docker push yourhubusername/<image_name>:<version>`
 
 🔅 Output:
 ```
