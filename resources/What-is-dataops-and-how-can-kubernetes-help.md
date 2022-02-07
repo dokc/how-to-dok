@@ -65,7 +65,10 @@ Kubernetes is an open-source <b><i>container orchestration system for automating
 
 - A Kubernetes cluster consists of a set of worker machines, called <i>nodes</i>, that run containerized applications.
 - Development teams and data science teams are increasingly interested in moving their build-test and model training environments to Kubernetes in order to drive efficiency and avoid vendor lock-in. When they make this migration, it is absolutely necessary for them to be able to take their clone-based processes with them so that they don’t lose all of the lifecycle efficiencies that they have achieved over the years. In fact, the lack of ability to clone a volume to a different namespace is often a showstopper. It is considered a best practice for different developers to work in different namespaces. This is done for security reasons, and there is typically no compromising when it comes to security. If clones are going to be included in the development lifecycle, the ability to clone workspaces to different namespaces is vital.
+
 ![image](https://www.unixarena.com/wp-content/uploads/2019/05/Master-In-Charge-for-K8s-Cluster.png)
+
+
 - Every cluster has at least one worker node. Hence if a node fails, your application will still be accessible from the other nodes as in a cluster, multiple nodes are grouped.
 
 ### Why should you use Kubernetes for DataOps?
