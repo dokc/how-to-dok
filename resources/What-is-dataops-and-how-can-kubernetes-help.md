@@ -76,13 +76,16 @@ Kubernetes is an open-source <b><i>container orchestration system for automating
  DataOps has many things in common that relate them to Kubernetes. It serve the same business goals as devops when it comes to speeding up application software development, deployment, and delivery. In a nutshell, the DataOps practices focus on improving application production through software development workflow optimization powered by data-driven insights.
 
  Kubernetes follows the same principles being a powerful tool that provides a rock-solid technological ground for enhancements on both software and human levels. DataOps engineers can leverage the accuracy of massive data assets for their BigData analytics through robust data orchestration, timely updates, persistent data storage, and streamlined data pipelines across platforms and departments.
+ 
+ K8s is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available.
 
-  The benefits Kubernetes brings to organizations in slightly more generic concepts. This is due to the fact that K8s can positively affect the workflows of various teams and departments at a time. What’s more, the benefits have an accumulative effect as you can capitalize on utilizing Kubernetes in the long run.
+  The benefits Kubernetes brings to organizations in slightly more generic concepts. This is due to the fact that K8s can positively affect the workflows of various teams and departments at a time. What’s more, the benefits have an accumulative effect as you can capitalize on utilizing Kubernetes in the long run. Because of K8s open-source ecosystem. 
 
 
      
      > Service deployment and adjustment.
      > Storage Alternatives.
+     > Self-healing.
      > Automatic Selection.
      > Recovery Mechanisms.
      > Constant Monitoring. and many more...
