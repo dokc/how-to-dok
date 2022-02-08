@@ -1,0 +1,9 @@
+singer: !!str
+collaborated_artists:
+  - artist: !!str
+song_name: !!str
+album: !!str
+date_of_release: 
+lyrics: !!str "lyrics"
+lyrics_by: !!str 
+link: !!str

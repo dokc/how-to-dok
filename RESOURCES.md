@@ -7,6 +7,8 @@
     - [Cassandra](#cassandra)
     - [Docker](#docker)
     - [Kubernetes](#kubernetes)
+    - [K8ssandra](#k8ssandra)
+    - [Argo Workflows](#argo-workflows)
 - [Documentation/Cheat Sheets](#documentationcheat-sheets)  
 - [Blogs/Articles](#blogsarticles) 
 - [Other Resources](#other-resources)
@@ -28,10 +30,21 @@
 - ### Docker
 
     1. [Docker Tutorial for Beginners - TechWorld with Nana](https://youtu.be/3c-iBn73dDE)
+    2. [Dockerizing a Node.js web app](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)
     
 - ### Kubernetes
 
     1. [Kubernetes Tutorial for Beginners - TechWorld with Nana](https://www.youtube.com/watch?v=X48VuDVv0do&t=803s)
+    2. [How to Run NodeJS application on Kubernetes - blog](medium.com/@bajiraouttamsinha/lets-deploy-our-first-nodejs-application-on-kubernetes-874870270b5b)
+
+- ### K8ssandra
+
+    1. [Introducing K8ssandra - Apache Cassandra & Kubernetes](https://youtu.be/pvzr75ZYwLE)
+
+- ### Argo Workflows
+
+    1. [Argo Workflows Training - Argo Proj](https://youtube.com/playlist?list=PLGHfqDpnXFXLHfeapfvtt9URtUF1geuBo)
+    2. [Argo Workflows and Argo Events - Anais Urlichs](https://youtu.be/c3qJr6L8nHg)
 
 ## Documentation/Cheat Sheets
 
@@ -56,5 +69,7 @@
     - *List of additional resources for kubernetes*
 - [Katacoda](https://www.katacoda.com)
     - *Hands on Docker & K8s*
+- [Argo Workflows - Katacoda](https://www.katacoda.com/argoproj/courses/argo-workflows/)
+    - *Hands on Argo Workflows on Kubernetes*
 - [QnA](https://www.notion.so/Questions-Deepanshu-Goel-3b111a11946b47c7a72629108b9986f2)
     - *Question and Answers related to DoK Rap Project*
