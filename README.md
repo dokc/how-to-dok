@@ -44,7 +44,7 @@ CI/CD can be an interesting topic itself per component, but let us focus on one 
 
 
 ### Database Schema
-![Database Schema]("resources/database/ERD.png")
+![Database Schema](resources/database/ERD.png)
 
 
 #### What should the outcome or products of this project be?
