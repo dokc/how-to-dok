@@ -35,7 +35,8 @@ Status: Downloaded newer image for centos:7
 docker.io/library/centos:7
 ```
 
-### Step 2: To check and list all docker images `docker images`
+### Step 2: To check and list all docker images
+         `docker images`
 
 🔅 Output :
 ```
