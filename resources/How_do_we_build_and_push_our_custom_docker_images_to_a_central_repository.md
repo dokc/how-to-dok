@@ -6,7 +6,7 @@ Docker is an open-source lightweight virtualization tool. It is containerizing p
 ## What Exactly Is A Docker Image? 🐋
 A Docker image is a read-only, inert template that comes with instructions for deploying containers. In Docker, everything basically revolves around images.An image consists of a collection of files (or layers) that pack together all the necessities—such as dependencies, source code, and libraries—needed to set up a completely functional container environment.
 
-<b>Images are stored on a Docker registry, such as the Docker Hub, or on a local registry.</b>
+**Images are stored on a Docker registry, such as the Docker Hub, or on a local registry.**
 
 ## 🔰 Ways to create a custom docker image:
 
@@ -17,14 +17,15 @@ A Docker image is a read-only, inert template that comes with instructions for d
 
 ## 🔰 Let's take an example and built the docker image using both the ways:
 
-👉🏻 So here we are going to <b>Build Apache Web Server Docker Image</b>
+👉🏻 So here we are going to **Build Apache Web Server Docker Image**
 
 <i>Apache web server is popular open source http web server tool which is widely used for deployment of webpages. It can be installed in any operating system.</i>
 
 ## 1. Manual :
 
-### Step 1: Get the latest Centos Docker image by using <b>docker pull command.</b><br> 
+### Step 1: Get the latest Centos Docker image by using docker pull command.
 `docker pull centos:7` <i>Docker pull command is used to download or pull latest image from Docker Hub repositories.</i> 
+(You can work with any version or any distribution of linux)
 
 🔅 Output :
 ```
@@ -45,7 +46,7 @@ centos       7         eeb6ee3f44bd   4 months ago   204MB
 ```
 
 ### Step 3: To run docker image we use following command <br>
-👉🏻 `-it` : This argument is used to allocate a bash shell and take standard input. <br>
+👉🏻 `-i & -t` : `-i` gives an option to set the cli flag to interactive and `-t` is used to set the terminal flag. <br>
 👉🏻 `--name` : This argument is used to tag a name to the running container.<br>
 👉🏻 `docker run –it –name webserver centos:7`
 
@@ -226,19 +227,19 @@ EXPOSE 80
 
 👉🏻 Dockerfile commands explanation:
 
-1. <b>MAINTAINER</b> — This command is used to give the information about the author or manager who is managing this image.
+1. **MAINTAINER** — This command is used to give the information about the author or manager who is managing this image.
 `MAINTAINER Vrukshali`
 
-2. <b>RUN</b> — Before building an image if want some configuration that needs to be present in the image. Inside the image we need to install Apache web server image the command to install that image is
+2. **RUN** — Before building an image if want some configuration that needs to be present in the image. Inside the image we need to install Apache web server image the command to install that image is
 `RUN yum install httpd -y`
 
-3. <b>COPY</b> - This command is used to copy a file from host os to docker container
+3. **COPY** - This command is used to copy a file from host os to docker container
 `COPY index.html /var/www/html`
 
-4. <b>EXPOSE</b> - This command is used to specify the port number in which the container is running its process. Anybody can come from outside and connect to this port. Apache webserver is launched at port 80 by default that is why we need to expose container at port 80.
+4. **EXPOSE** - This command is used to specify the port number in which the container is running its process. Anybody can come from outside and connect to this port. Apache webserver is launched at port 80 by default that is why we need to expose container at port 80.
 `EXPOSE 80`
 
-5. <b>CMD</b> - To run a command as soon as container is launched. CMD command is different from RUN because RUN is used at the time of building an image and CMD used to run command when container is started. <br>
+5. **CMD** - To run a command as soon as container is launched. CMD command is different from RUN because RUN is used at the time of building an image and CMD used to run command when container is started. <br>
 `/usr/sbin/httpd` - This command is used to start the web server <br>
 `-DFOREGROUND` — This is not a docker command this is http server argument which is used to run webserver in background. If we do not use this argument the server will start and then it will stop. <br>
 `CMD [“/usr/sbin/httpd”,” -D”,” FOREGROUND”]`
