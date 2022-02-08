@@ -156,7 +156,9 @@ Complete!
 
 👉🏻 ```Custom docker image created !!!```
 
-### Step 6: Now exit from the running container using `exit` command. Exit command will stop the container. Exit command of docker same as power off or shut down of our computer.
+### Step 6: Now exit from the running container using `exit` command.
+
+ * Exit command will stop the container. Exit command of docker same as power off or shut down of our computer.
 
 ### Step 7: We have container in which apache webserver is installed and our webpage is configured. We can make a new customized docker image from the stopped docker image using `docker commit` command. Docker commit command will build our own image.
 
