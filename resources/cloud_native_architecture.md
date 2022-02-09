@@ -18,7 +18,7 @@ The following are the 2 popular approaches used by developers to build their app
 **1) Monolithic Architecture**</br>
 **2) Microservices Architecture**
 
-### **Monolithic Architecture** <hr/>
+### **Monolithic Architecture** 
 
 Monolithic Architecture is like a big container, wherein all the software components of an application are assembled together and tightly coupled, i.e., components are dependent on each other.
 For example if we take an e-commerce application, the different components that make this app include :
@@ -36,7 +36,7 @@ In monolithic architecture all these components are developed as a part of one s
 
 Now with the advent of the cloud, developers came up with a new form of architecture , the microservices architecture.
 
-### **Microservices Architecture** <hr/>
+### **Microservices Architecture** 
 
 Microservices (or microservices architecture) are a cloud native architectural approach in which a single application is composed of many loosely coupled and independently deployable smaller components, or services.</br>
 These services include :
