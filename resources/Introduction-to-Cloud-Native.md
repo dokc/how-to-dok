@@ -20,7 +20,9 @@ such as public, private, and hybrid clouds. Containers, service meshes, microser
 
 Since the cloud reduces the overhead cost of owning a server and configuring it to run our application, it makes more sense to use a cloud service to run our application which makes the whole process easy.
 The cloud offers various services that can be utilised to make our applications more efficient.<br/><br/>
-Some of the various service included with a cloud :
+
+
+Some of the various services included with a cloud : 
 
 - Isolation
 - Scalability
