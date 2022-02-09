@@ -156,7 +156,7 @@ And we should not have a cassandra datacentres kubernetes object!
 kubectl get cassandradatacenters.cassandra.datastax.com -n cass-operator
 ```
 
-Next up it is time to create a minimal example of a cassandra datacentre. For this we take the example-cassdc-minimal.yaml from https://raw.githubusercontent.com/k8ssandra/cass-operator/master/operator/example-cassdc-yaml/cassandra-3.11.x/example-cassdc-minimal.yaml, but we update it with a custom local-path storage class so we can run on k3d using local storage as a storage backend.
+Next up it is time to create a minimal example of a cassandra datacenter. For this we take the example-cassdc-minimal.yaml from https://raw.githubusercontent.com/k8ssandra/cass-operator/master/operator/example-cassdc-yaml/cassandra-3.11.x/example-cassdc-minimal.yaml, but we update it with a custom local-path storage class so we can run on k3d using local storage as a storage backend.
 
 See: [example-cassdc-minimal-local-path-storage.yaml](example-cassdc-minimal-local-path-storage.yaml#L15-L21)
 
