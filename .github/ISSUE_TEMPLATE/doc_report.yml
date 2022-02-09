@@ -7,8 +7,8 @@ body:
     attributes:
       label: Category of documentation update
       description: |
-      What category does this change fall under. |
-      for example Typo error, New category addition, Rephrasing the sentences, fixing broken links etc 
+          What category does this change fall under. 
+          for example Typo error, New category addition, Rephrasing the sentences, fixing broken links etc 
     validations:
       required: true
   - type: textarea
