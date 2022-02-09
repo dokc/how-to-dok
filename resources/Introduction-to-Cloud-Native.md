@@ -7,7 +7,7 @@ such as public, private, and hybrid clouds. Containers, service meshes, microser
 
 **So simply defined, cloud-native is building an application for the cloud by making efficient use of the resources the cloud provides.**
 
-### **Need for cloud-native** <hr/>
+### **Need for cloud-native** 
 
 1. Cloud-native applications are different from the traditional applications that run in our data centres.
    The applications that are designed traditionally are not built keeping cloud compatibility in mind, this hinders the smooth functioning of the application.<br/>
@@ -16,7 +16,7 @@ such as public, private, and hybrid clouds. Containers, service meshes, microser
 
 3. Also Applications built on the philosophy and principles of cloud native can still be extended to the on-premises server. Cloud Native gives us that extended flexibility. An application that is deployed on cloud can be deployed on-prem if it is managed well and done right.
 
-### **Why Cloud Native?** <hr/>
+### **Why Cloud Native?** 
 
 Since the cloud reduces the overhead cost of owning a server and configuring it to run our application, it makes more sense to use a cloud service to run our application which makes the whole process easy.
 The cloud offers various services that can be utilised to make our applications more efficient.<br/><br/>
