@@ -42,6 +42,11 @@ The initial destination for our data. A K8ssandra cluster configuration using th
 How do we ensure we get our container image built and released automatically? So, that the services in our cluster can use it via CI/CD. <br />
 CI/CD can be an interesting topic itself per component, but let us focus on one use case first.
 
+
+### Database Schema
+![Database Schema](resources/database/ERD.png)
+
+
 #### What should the outcome or products of this project be?
 
 Ideally, what we are looking for is documentation, best practices, example resources (code, k8s resource definitions), tutorials on how to achieve running a cloud-native data workflow on Kubernetes.
@@ -60,6 +65,12 @@ We can identify some specific knowledge areas
 - Github workflow
 - Local GIT flow
 - CI/CD Automation
+
+### Resources
+
+Here is a list of knowledge resources created by this community:
+- [Run k8ssandra on k3d locally - lightweight](resources/run-k8ssandra-on-k3d-locally-lightweight/run-k8ssandra-on-k3d-locally-lightweight.md)
+- [How to run a cassandra docker container locally](Cassandra-Local-Config/README.md)
 
 ### Reference articles
 
