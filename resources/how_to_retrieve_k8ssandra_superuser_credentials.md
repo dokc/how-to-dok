@@ -145,7 +145,7 @@ curl -L -X POST 'http://localhost:8081/v1/auth' -H 'Content-Type: application/js
 *You should receive a token in the response similar to this:*
 
 ```sh
-To be added by Abhijith Ganesh
+{"authToken":"f9e6208d-805c-48b0-86a0-40f33996e94a"}
 ```
 
 
