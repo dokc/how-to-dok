@@ -106,12 +106,3 @@ Delphix is the industry leader in Data Ops and provides an intelligent data plat
 ## Finally...
 
 There is no doubt that Kubernetes is a true game-changer in today's software development. The platform helps you boost the overall performance and productivity when it comes to efficiently managing containerized services and workloads. Not to mention its huge time- and cost-saving potential. With Kubernetes at your fingertips, you can drastically enhance the efficacy of your DevOps, DataOps, and GitOps workflows while creating automated CI/CD pipelines.
-
-
-
-
-
-
-
-
-
