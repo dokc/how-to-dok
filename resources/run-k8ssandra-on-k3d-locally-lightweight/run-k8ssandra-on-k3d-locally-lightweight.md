@@ -7,11 +7,12 @@ It is a lightweight, stripped down bare minimum k8ssandra installation intended 
 **Docker is required on your machine and needs to be running for k3d**
 
 What do we need to get this up and running:
-* Docker
-* HELM
-* K3D
-* K8ssandra
-* kubectl
+
+- Docker
+- HELM
+- K3D
+- K8ssandra
+- kubectl
 
 Let's get cooking! 🥣
 
@@ -34,10 +35,9 @@ Next up, k3d.
 
 ### k3d
 
-To simulate multiple kubernetes nodes locally we use k3d which is a wrapper around k3s to enable it to run in Docker. This way we can simulate a multi nodes cluster locally. k3s is an extremely lightweight and portable kubernetes version developed by Rancher.
+To simulate multiple Kubernetes nodes locally we use k3d which is a wrapper around k3s to enable it to run in Docker. This way we can simulate a multi nodes cluster locally. k3s is an extremely lightweight and portable Kubernetes version developed by Rancher.
 
 Let's start by installing k3d.
-
 
 The below command downloads the k3d install script from the rancher/k3d repository and using the TAG=v4.4.8 installs that version of k3d on our local system.
 
@@ -49,6 +49,7 @@ TAG=v4.4.8 bash install.sh
 ```
 
 Your output should look like this:
+
 ```
 Preparing to install k3d into /usr/local/bin
 k3d installed into /usr/local/bin/k3d
@@ -57,24 +58,28 @@ Run 'k3d --help' to see what you can do with it.
 
 Next up we can create our k3d cluster!
 Notice the `--server 3` parameter. This ensures we have a 3 node cluster. This is important for getting a usefull k8ssandra cluster running.
+
 ```
 k3d cluster create my-awesome-cluster --servers 3
 ```
 
 k3d automatically configures our kubectl for our cluster. You might have to switch configuration context. You can do this by running.
+
 ```
 kubectl config use-context k3d-my-awesome-cluster
 ```
 
 Then check if you can access the cluster:
+
 ```
 kubectl cluster-info
 kubectl get nodes
 ```
 
 You output should look like this:
+
 ```
-tim@calculator:~/code/patchandpray/how-to-dok$ k cluster-info 
+tim@calculator:~/code/patchandpray/how-to-dok$ k cluster-info
 Kubernetes control plane is running at https://0.0.0.0:37003
 CoreDNS is running at https://0.0.0.0:37003/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 Metrics-server is running at https://0.0.0.0:37003/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
@@ -89,13 +94,14 @@ k3d-my-awesome-cluster-server-2   Ready    control-plane,etcd,master   13m   v1.
 
 ## K8ssandra - lightweight
 
-When following the boilerplate k8ssandra.io installation guide we get a full blown cluster with monitoring and all the bangs and whistles with minimum effort. But this adds on a lot of additional features and complexity that for a simple use case we do not need. To get aquainted with k8ssandra and to have a lightweight develoment installation. The following steps are sufficient.
+When following the boilerplate k8ssandra.io installation guide we get a full blown cluster with monitoring and all the bangs and whistles with minimum effort. But this adds on a lot of additional features and complexity that for a simple use case we do not need. To get acquainted with k8ssandra and to have a lightweight development installation. The following steps are sufficient.
 
 ### Install HELM
 
 We need to pick one component from the k8ssandra HELM chart, namely the k8ssandra operator. For this we need HELM.
 
 Get the HELM archive from the helm website.
+
 ```
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
@@ -103,6 +109,7 @@ chmod 700 get_helm.sh
 ```
 
 You output should be similar to:
+
 ```
 Downloading https://get.helm.sh/helm-v3.7.1-linux-amd64.tar.gz
 Verifying checksum... Done.
@@ -117,6 +124,7 @@ Awesome. Time for k8ssandra 💪
 ### k8ssandra
 
 First up, we need the helm k8ssandra repository since we need a component that we will install using helm.
+
 ```
 helm repo add k8ssandra https://helm.k8ssandra.io/stable
 helm repo update
@@ -125,12 +133,14 @@ helm repo update
 ☝️ `helm repo update` ensures we have the latest information from the k8ssandra repository.
 
 Next up we install only the cass-operator and we install it in the cass-operator namespace.
-The cass-operator enables us to spin up cassandra datacenters and manage them.
+The cass-operator enables us to spin up cassandra datacentres and manage them.
+
 ```
 helm install cass-operator k8ssandra/cass-operator -n cass-operator --create-namespace
 ```
 
-Our output should looke like this:
+Our output should look like this:
+
 ```
 NAME: cass-operator
 LAST DEPLOYED: Thu Nov 25 21:28:07 2021
@@ -140,7 +150,8 @@ REVISION: 1
 TEST SUITE: None
 ```
 
-And we should not have a cassandradatacenters kubernetes object!
+And we should not have a cassandra datacentres kubernetes object!
+
 ```
 kubectl get cassandradatacenters.cassandra.datastax.com -n cass-operator
 ```
@@ -150,18 +161,21 @@ Next up it is time to create a minimal example of a cassandra datacenter. For th
 See: [example-cassdc-minimal-local-path-storage.yaml](example-cassdc-minimal-local-path-storage.yaml#L15-L21)
 
 Apply it!
+
 ```
 kubectl -n cass-operator apply -f example-cassdc-minimal-local-path-storage.yaml
 ```
 
 Your output should look like this:
+
 ```
 cassandradatacenter.cassandra.datastax.com/dc1 created
 ```
 
-And after a little while our cassandra datacenter should come up...
+And after a little while our cassandra datacentre should come up...
+
 ```
-kubectl get pods -n cass-operator 
+kubectl get pods -n cass-operator
 ...
 NAME                            READY   STATUS    RESTARTS   AGE
 cass-operator-99b74bdd7-q89zb   1/1     Running   0          20m
@@ -173,6 +187,7 @@ cluster1-dc1-default-sts-2      1/2     Running   0          2m56s
 But we only get one container running per pod!! That is not good, let's check out what is going on!
 
 Let's check the container logs for our pods:
+
 ```
 kubectl logs -n cass-operator cluster1-dc1-default-sts-0 --container cassandra
 ...
@@ -212,8 +227,9 @@ Uh oh, looks like some filesystem permission errors. Remember we are using local
 The local-path storage backend uses a simple configuration file that contains a setup and teardown part. These parts determine how new volume's are created, and with which permissions! https://github.com/rancher/local-path-provisioner#customize-the-configmap
 
 Let's check the current `setup` and `teardown` bits of the default local-path configuration:
+
 ```
-kubectl get configmaps -n kube-system local-path-config -o yaml 
+kubectl get configmaps -n kube-system local-path-config -o yaml
 ...
   setup: |-
     #!/bin/sh
@@ -252,6 +268,7 @@ kubectl get configmaps -n kube-system local-path-config -o yaml
 ```
 
 Looks like we have our culprit:
+
 ```
     mkdir -m 0700 -p ${absolutePath}
 ```
@@ -263,17 +280,20 @@ Included here is a an altered version of the local-path configmap with relaxed p
 **Remember that this is for development purposes, do not use these permissions in live systems**
 
 Let's apply our updated config:
+
 ```
 kubectl apply -f local-path-config-relaxed-permissions.yaml
 ```
 
-And redeploy our cassandra datacenter:
+And redeploy our cassandra datacentre:
+
 ```
 kubectl delete cassandradatacenters.cassandra.datastax.com dc1 -n cass-operator
 kubectl -n cass-operator apply -f example-cassdc-minimal-local-path-storage.yaml
 ```
 
-After some time our cassandra datacenter pods should come up, working, with permission to write to local-path storage! 🚀
+After some time our cassandra datacentre pods should come up, working, with permission to write to local-path storage! 🚀
+
 ```
 kubectl get pods -n cass-operator
 NAME                            READY   STATUS    RESTARTS   AGE
@@ -283,4 +303,4 @@ cluster1-dc1-default-sts-1      2/2     Running   0          3m4s
 cluster1-dc1-default-sts-2      2/2     Running   0          3m4s
 ```
 
-This concludes setting up a lightweight 3 node cassandra datacenter cluster user only the k8ssandra operator on k3d using local-path storage.
+This concludes setting up a lightweight 3 node cassandra datacentre cluster user only the k8ssandra operator on k3d using local-path storage.
