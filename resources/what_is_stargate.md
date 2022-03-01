@@ -1,10 +1,10 @@
-Let's understand Stargate
+♠ Let's understand Stargate
 
-# What are APIs?
+# What are APIs? 🚀
 
 API stands for an **Application programming interface**. 
 
-Consider an example below:
+🔅 Consider an example below:
 
 ![](https://cdn-images-1.medium.com/max/880/1*PFEHu46MDh1sajTJgeMSqg.png)
 
@@ -18,21 +18,21 @@ Hope the above example explains what an API is, let's understand it from the dev
 
 **So here, the customers mean the applications send requests to the server via API and then the server responds to them.**
 
-# What is Stargate API?
+# What is Stargate API?🚀
 
-Stargate is an open-source data gateway that sits between your app and your databases. Stargate brings together an API platform and data request coordination code into one OSS project. In simple words, it is a framework used to customize all aspects of data access. It is deployed between client applications and a database to provide an abstraction layer that can be used to shape your data access to fit your application’s needs.
+🔅 Stargate is an open-source data gateway that sits between your app and your databases. Stargate brings together an API platform and data request coordination code into one OSS project. In simple words, it is a framework used to customize all aspects of data access. It is deployed between client applications and a database to provide an abstraction layer that can be used to shape your data access to fit your application’s needs.
 
 ![](https://cdn-images-1.medium.com/max/880/1*pBJ2kPKU2JRkhWtRn1eGPg.png)
 
 
-# How to use it in our cluster?
- In order to use Stargate API in our existing cluster, we need to generate access tokens which can be found here: How to get access token (linked to issue [FEATURE]: How to retrieve super-user credentials #94)
+# How to use it in our cluster? ⚡
+👉🏻 In order to use Stargate API in our existing cluster, we need to generate access tokens which can be found here: How to get access token (linked to issue [FEATURE]: How to retrieve super-user credentials #94)
 
 Now we're ready to use the REST API for CRUD operations. You can use POSTMAN as well!!
 
 ## Check existing keyspace
 
-A **keyspace** is a container for which a replication factor defines the number of data replicas the database will store. Tables consist of columns that each have a name and a defined data type. Multiple tables are contained in a keyspace, but a table cannot be contained in multiple keyspaces. 
+👉🏻 A **keyspace** is a container for which a replication factor defines the number of data replicas the database will store. Tables consist of columns that each have a name and a defined data type. Multiple tables are contained in a keyspace, but a table cannot be contained in multiple keyspaces. 
 
 **Since we are connecting to a Cassandra database with an existing schema, we can directly see how many keyspaces are present**
 
@@ -43,7 +43,7 @@ curl -s -L -X GET localhost:8082/v2/schemas/keyspaces \
 -H "Accept: application/json"
 ```
 
-The authorization token and the content type are passed with `--header`. 
+👉🏻 The authorization token and the content type are passed with `--header`. 
 The token must be identified  `X-Cassandra-Token` so that cluster recognizes the token and its value. For shorthand, `cURL` can use `-L` for `--location`, `-X` for `--request`, and `-H` for `--header`
 
 Output :
