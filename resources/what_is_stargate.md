@@ -26,7 +26,9 @@ Hope the above example explains what an API is, let's understand it from the dev
 
 
 # How to use it in our cluster? ⚡
-👉🏻 In order to use Stargate API in our existing cluster, we need to generate access tokens which can be found here: How to get access token (linked to issue [FEATURE]: How to retrieve super-user credentials #94)
+👉🏻 In order to use Stargate API in our existing cluster, we need to generate access tokens. <br>
+[Get cluster up and running](https://dokc.github.io/Helm-Charts/) <br>
+[How to get access token?](https://github.com/dokc/how-to-dok/blob/main/resources/how_to_retrieve_k8ssandra_superuser_credentials.md)
 
 Now we're ready to use the REST API for CRUD operations. You can use POSTMAN as well!!
 
