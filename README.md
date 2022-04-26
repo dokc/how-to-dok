@@ -3,7 +3,7 @@
 
 # NOTICE
 
-This project has been moveed and phased out. The updated version of this project is *[RAP-GOD-API](https://github.com/dokc/rap-god-api)*
+This project has been moved and phased out. The updated version of this project is *[RAP-GOD-API](https://github.com/dokc/rap-god-api)*
 
 ## How To (Get) Data on Kubernetes
 
